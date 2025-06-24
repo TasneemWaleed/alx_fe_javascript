@@ -61,7 +61,7 @@ function addQuote() {
 }
 
 // =====================
-// CREATE FORM (Required by Task 0)
+// CREATE FORM (Task 0 Requirement)
 // =====================
 function createAddQuoteForm() {
   const formContainer = document.getElementById("formContainer");
@@ -112,7 +112,7 @@ function filterQuotes() {
 }
 
 // =====================
-// IMPORT/EXPORT JSON
+// IMPORT / EXPORT JSON
 // =====================
 function exportToJsonFile() {
   const dataStr = JSON.stringify(quotes, null, 2);
@@ -149,9 +149,9 @@ function importFromJsonFile(event) {
 }
 
 // =====================
-// SYNC WITH SERVER (Simulated)
+// SERVER SYNC SIMULATION (Required Name)
 // =====================
-function syncWithServer() {
+function fetchQuotesFromServer() {
   fetch("https://jsonplaceholder.typicode.com/posts/1")
     .then((response) => response.json())
     .then((serverData) => {
@@ -206,5 +206,5 @@ createAddQuoteForm();
 populateCategories();
 loadLastViewedQuote();
 
-// 🔁 Start syncing with "server" every 20 seconds
-setInterval(syncWithServer, 20000);
+// ✅ Periodic Server Sync (every 20 seconds)
+setInterval(fetchQuotesFromServer, 20000);
