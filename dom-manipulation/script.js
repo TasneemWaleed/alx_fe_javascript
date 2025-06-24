@@ -151,28 +151,30 @@ function importFromJsonFile(event) {
 // =====================
 // SERVER SYNC SIMULATION (Required Name)
 // =====================
-function fetchQuotesFromServer() {
-  fetch("https://jsonplaceholder.typicode.com/posts/1")
-    .then((response) => response.json())
-    .then((serverData) => {
-      const simulatedQuote = {
-        text: serverData.title,
-        category: "Server"
-      };
+async function fetchQuotesFromServer() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    const serverData = await response.json();
 
-      const exists = quotes.some(q => q.text === simulatedQuote.text && q.category === simulatedQuote.category);
-      if (!exists) {
-        quotes.push(simulatedQuote);
-        saveQuotes();
-        populateCategories();
-        notifyUser("New quote synced from server.");
-      }
-    })
-    .catch((err) => {
-      console.error("Sync error:", err);
-      notifyUser("Server sync failed.");
-    });
+    const simulatedQuote = {
+      text: serverData.title,
+      category: "Server"
+    };
+
+    const exists = quotes.some(q => q.text === simulatedQuote.text && q.category === simulatedQuote.category);
+    if (!exists) {
+      quotes.push(simulatedQuote);
+      saveQuotes();
+      populateCategories();
+      notifyUser("New quote synced from server.");
+    }
+
+  } catch (err) {
+    console.error("Sync error:", err);
+    notifyUser("Server sync failed.");
+  }
 }
+
 
 function notifyUser(message) {
   const note = document.createElement("div");
