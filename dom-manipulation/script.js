@@ -8,14 +8,14 @@ const quotes = [
 // DOM Elements
 const quoteDisplay = document.getElementById("quoteDisplay");
 const newQuoteBtn = document.getElementById("newQuote");
-const addQuoteBtn = document.getElementById("addQuoteBtn");
+//const addQuoteBtn = document.getElementById("addQuoteBtn");
 const newQuoteText = document.getElementById("newQuoteText");
 const newQuoteCategory = document.getElementById("newQuoteCategory");
 
 // Show a random quote
 function showRandomQuote() {
   if (quotes.length === 0) {
-    quoteDisplay.textContent = "No quotes available.";
+    quoteDisplay.innerHTML = "No quotes available.";
     return;
   }
 
@@ -45,7 +45,7 @@ function addQuote() {
 
 // Event listeners
 newQuoteBtn.addEventListener("click", showRandomQuote);
-addQuoteBtn.addEventListener("click", addQuote);
+//addQuoteBtn.addEventListener("click", addQuote);
 
 // Initial quote display
 showRandomQuote();
