@@ -11,8 +11,14 @@
   <div id="quoteDisplay"></div>
   <button id="newQuote">Show New Quote</button>
 
-  <!-- Form will be created dynamically -->
+  <!-- Form created dynamically -->
   <div id="formContainer"></div>
+
+  <br><br>
+
+  <!-- Export & Import -->
+  <button onclick="exportToJsonFile()">Export Quotes to JSON</button>
+  <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
 
   <script src="script.js"></script>
 </body>
