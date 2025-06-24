@@ -189,8 +189,8 @@ async function fetchQuotesFromServer() {
       quotes.push(simulatedQuote);
       saveQuotes();
       populateCategories();
-      notifyUser("New quote synced from server.");
     }
+    notifyUser("Quotes synced with server!");
   } catch (err) {
     console.error("Sync error:", err);
     notifyUser("Server sync failed.");
